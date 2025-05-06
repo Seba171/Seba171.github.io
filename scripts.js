@@ -3,7 +3,7 @@ document.cookie = "favorite_food=tripe; SameSite=None; Secure";
 
 function showCookies() {
   const output = document.getElementById("cookies");
-  output.textContent = `> ${document.cookie}`;
+  output.textContent = > ${document.cookie};
 }
 
 function clearOutputCookies() {
@@ -21,11 +21,29 @@ const cookieValue = document.cookie
 
 function showCookieValue() {
   const output = document.getElementById("cookie-value");
-  output.textContent = `> ${cookieValue}`;
+  output.textContent = > ${cookieValue};
 }
 
 function clearOutputCookieValue() {
   const output = document.getElementById("cookie-value");
+  output.textContent = "";
+}
+
+
+function resetOnce() {
+  // Note that we are setting SameSite=None; in this example because the example
+  // needs to work cross-origin.
+  // It is more common not to set the SameSite attribute, which results in the default,
+  // and more secure, value of SameSite=Lax;
+  document.cookie =
+    "doSomethingOnlyOnce=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure";
+
+  const output = document.getElementById("reset-once");
+  output.textContent = "> Reset!";
+}
+
+function clearOutputResetOnce() {
+  const output = document.getElementById("reset-once");
   output.textContent = "";
 }
 
@@ -35,10 +53,10 @@ function doOnce() {
       .split("; ")
       .find((row) => row.startsWith("doSomethingOnlyOnce"))
   ) {
-    // Note that we are setting `SameSite=None;` in this example because the example
+    // Note that we are setting SameSite=None; in this example because the example
     // needs to work cross-origin.
-    // It is more common not to set the `SameSite` attribute, which results in the default,
-    // and more secure, value of `SameSite=Lax;`
+    // It is more common not to set the SameSite attribute, which results in the default,
+    // and more secure, value of SameSite=Lax;
     document.cookie =
       "doSomethingOnlyOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None; Secure";
 
@@ -53,10 +71,10 @@ function clearOutputDoOnce() {
 }
 
 function resetOnce() {
-  // Note that we are setting `SameSite=None;` in this example because the example
+  // Note that we are setting SameSite=None; in this example because the example
   // needs to work cross-origin.
-  // It is more common not to set the `SameSite` attribute, which results in the default,
-  // and more secure, value of `SameSite=Lax;`
+  // It is more common not to set the SameSite attribute, which results in the default,
+  // and more secure, value of SameSite=Lax;
   document.cookie =
     "doSomethingOnlyOnce=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure";
 
@@ -69,10 +87,10 @@ function clearOutputResetOnce() {
   output.textContent = "";
 }
 
-// Note that we are setting `SameSite=None;` in this example because the example
+// Note that we are setting SameSite=None; in this example because the example
 // needs to work cross-origin.
-// It is more common not to set the `SameSite` attribute, which results in the default,
-// and more secure, value of `SameSite=Lax;`
+// It is more common not to set the SameSite attribute, which results in the default,
+// and more secure, value of SameSite=Lax;
 document.cookie = "reader=1; SameSite=None; Secure";
 
 function checkACookieExists() {
