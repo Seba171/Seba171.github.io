@@ -1,77 +1,102 @@
-// Set cookies (basic, without SameSite or Secure for local testing)
-document.cookie = "session=test_GDPR";
-document.cookie = "favorite_task=collect_Data";
-document.cookie = "name=Oeschger";
-document.cookie = "favorite_food=tripe";
-document.cookie = "test1=Hello";
-document.cookie = "test2=World";
-document.cookie = "reader=1";
-
-function alertCookie() {
-  alert(document.cookie);
-}
+document.cookie = "name=Oeschger; SameSite=None; Secure";
+document.cookie = "favorite_food=tripe; SameSite=None; Secure";
 
 function showCookies() {
-  document.getElementById("cookies").textContent = `> ${document.cookie}`;
+  const output = document.getElementById("cookies");
+  output.textContent = `> ${document.cookie}`;
 }
 
 function clearOutputCookies() {
-  document.getElementById("cookies").textContent = "";
+  const output = document.getElementById("cookies");
+  output.textContent = "";
 }
 
+document.cookie = "test1=Hello; SameSite=None; Secure";
+document.cookie = "test2=World; SameSite=None; Secure";
+
+const cookieValue = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("test2="))
+  ?.split("=")[1];
+
 function showCookieValue() {
-  const cookieValue = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("test2="))
-    ?.split("=")[1];
-  document.getElementById("cookie-value").textContent = `> ${cookieValue}`;
+  const output = document.getElementById("cookie-value");
+  output.textContent = `> ${cookieValue}`;
 }
 
 function clearOutputCookieValue() {
-  document.getElementById("cookie-value").textContent = "";
+  const output = document.getElementById("cookie-value");
+  output.textContent = "";
 }
 
 function doOnce() {
-  if (!document.cookie.split("; ").find((row) => row.startsWith("doSomethingOnlyOnce"))) {
-    document.cookie = "doSomethingOnlyOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-    document.getElementById("do-once").textContent = "> Do something here!";
+  if (
+    !document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("doSomethingOnlyOnce"))
+  ) {
+    // Note that we are setting `SameSite=None;` in this example because the example
+    // needs to work cross-origin.
+    // It is more common not to set the `SameSite` attribute, which results in the default,
+    // and more secure, value of `SameSite=Lax;`
+    document.cookie =
+      "doSomethingOnlyOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None; Secure";
+
+    const output = document.getElementById("do-once");
+    output.textContent = "> Do something here!";
   }
 }
 
 function clearOutputDoOnce() {
-  document.getElementById("do-once").textContent = "";
+  const output = document.getElementById("do-once");
+  output.textContent = "";
 }
 
 function resetOnce() {
-  document.cookie = "doSomethingOnlyOnce=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-  document.getElementById("reset-once").textContent = "> Reset!";
+  // Note that we are setting `SameSite=None;` in this example because the example
+  // needs to work cross-origin.
+  // It is more common not to set the `SameSite` attribute, which results in the default,
+  // and more secure, value of `SameSite=Lax;`
+  document.cookie =
+    "doSomethingOnlyOnce=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure";
+
+  const output = document.getElementById("reset-once");
+  output.textContent = "> Reset!";
 }
 
 function clearOutputResetOnce() {
-  document.getElementById("reset-once").textContent = "";
+  const output = document.getElementById("reset-once");
+  output.textContent = "";
 }
 
+// Note that we are setting `SameSite=None;` in this example because the example
+// needs to work cross-origin.
+// It is more common not to set the `SameSite` attribute, which results in the default,
+// and more secure, value of `SameSite=Lax;`
+document.cookie = "reader=1; SameSite=None; Secure";
+
 function checkACookieExists() {
-  if (document.cookie.split(";").some((item) => item.trim().startsWith("reader="))) {
-    document.getElementById("a-cookie-existence").textContent = '> The cookie "reader" exists';
-  } else {
-    document.getElementById("a-cookie-existence").textContent = '> The cookie "reader" does NOT exist';
+  if (
+    document.cookie.split(";").some((item) => item.trim().startsWith("reader="))
+  ) {
+    const output = document.getElementById("a-cookie-existence");
+    output.textContent = '> The cookie "reader" exists';
   }
 }
 
 function clearOutputACookieExists() {
-  document.getElementById("a-cookie-existence").textContent = "";
+  const output = document.getElementById("a-cookie-existence");
+  output.textContent = "";
 }
 
 function checkCookieHasASpecificValue() {
-  const hasValue = document.cookie.split(";").some((item) => item.trim() === "reader=1");
-  if (hasValue) {
-    document.getElementById("a-specific-value-of-the-cookie").textContent = '> The cookie "reader" has a value of "1"';
-  } else {
-    document.getElementById("a-specific-value-of-the-cookie").textContent = '> The cookie "reader" does NOT have value "1"';
+  if (document.cookie.split(";").some((item) => item.includes("reader=1"))) {
+    const output = document.getElementById("a-specific-value-of-the-cookie");
+    output.textContent = '> The cookie "reader" has a value of "1"';
   }
 }
 
 function clearASpecificValueOfTheCookie() {
-  document.getElementById("a-specific-value-of-the-cookie").textContent = "";
+  const output = document.getElementById("a-specific-value-of-the-cookie");
+  output.textContent = "";
 }
