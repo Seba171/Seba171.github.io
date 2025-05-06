@@ -1,51 +1,44 @@
 <h1>"Hello world!"</h1>
 
-<script> document.cookie = "session=test GDPR"; document.cookie = "favorite_task=collect Data"; function alertCookie() { alert(document.cookie); } </script> 
+<body>
+  Bine ai venit la lab
 
-<body> Bine ai venit la lab <button onclick="alertCookie()">Show cookies</button> </body>
+  <button onclick="alertCookie()">Show alert cookies</button>
+  <button onclick="showCookies()">Show cookies</button>
+  <button onclick="clearOutputCookies()">Clear</button>
+  <div>
+    <code id="cookies"></code>
+  </div>
 
-<button onclick="showCookies()">Show cookies</button>
+  <button onclick="showCookieValue()">Show cookie value</button>
+  <button onclick="clearOutputCookieValue()">Clear</button>
+  <div>
+    <code id="cookie-value"></code>
+  </div>
 
-<button onclick="clearOutputCookies()">Clear</button>
+  <button onclick="doOnce()">Do only once</button>
+  <button onclick="clearOutputDoOnce()">Clear</button>
+  <div>
+    <code id="do-once"></code>
+  </div>
 
-<div>
-  <code id="cookies"></code>
-</div>
+  <button onclick="resetOnce()">Reset only once cookie</button>
+  <button onclick="clearOutputResetOnce()">Clear</button>
+  <div>
+    <code id="reset-once"></code>
+  </div>
 
-<button onclick="showCookieValue()">Show cookie value</button>
+  <button onclick="checkACookieExists()">Check if 'reader' cookie exists</button>
+  <button onclick="clearOutputACookieExists()">Clear</button>
+  <div>
+    <code id="a-cookie-existence"></code>
+  </div>
 
-<button onclick="clearOutputCookieValue()">Clear</button>
-
-<div>
-  <code id="cookie-value"></code>
-</div>
-
-<button onclick="resetOnce()">Reset only once cookie</button>
-
-<button onclick="clearOutputResetOnce()">Clear</button>
-
-<div>
-  <code id="reset-once"></code>
-</div>
-
-<button onclick="checkACookieExists()">Check a cookie exists</button>
-
-<button onclick="clearOutputACookieExists()">Clear</button>
-
-<div>
-  <code id="a-cookie-existence"></code>
-</div>
-
-<button onclick="checkCookieHasASpecificValue()">
-  Check that a cookie has a specific value
-</button>
-
-<button onclick="clearASpecificValueOfTheCookie()">Clear</button>
-
-<div>
-  <code id="a-specific-value-of-the-cookie"></code>
-</div>
-
+  <button onclick="checkCookieHasASpecificValue()">Check if 'reader' cookie has value 1</button>
+  <button onclick="clearASpecificValueOfTheCookie()">Clear</button>
+  <div>
+    <code id="a-specific-value-of-the-cookie"></code>
+  </div>
 <script src="scripts.js"></script>
 
 
