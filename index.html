@@ -1,9 +1,17 @@
+<h1>"Hello world!"</h1>
+
+<script> document.cookie = "session=test GDPR"; document.cookie = "favorite_task=collect Data"; function alertCookie() { alert(document.cookie); } </script> 
+
+<body> Bine ai venit la lab <button onclick="alertCookie()">Show cookies</button> </body>
+
 <button onclick="showCookies()">Show cookies</button>
 
 <button onclick="clearOutputCookies()">Clear</button>
 
 <div>
-  <code id="cookies">
+
+
+  <code id="cookies"></code>
 </div>
 
 <button onclick="showCookieValue()">Show cookie value</button>
@@ -11,18 +19,10 @@
 <button onclick="clearOutputCookieValue()">Clear</button>
 
 <div>
-  <code id="cookie-value">
+  <code id="cookie-value"></code>
 </div>
 
-<button onclick="doOnce()">Only do something once</button>
-
-<button onclick="clearOutputDoOnce()">Clear</button>
-
-<div>
-  <code id="do-once"></code>
-</div
-
-  <button onclick="resetOnce()">Reset only once cookie</button>
+<button onclick="resetOnce()">Reset only once cookie</button>
 
 <button onclick="clearOutputResetOnce()">Clear</button>
 
@@ -48,4 +48,4 @@
   <code id="a-specific-value-of-the-cookie"></code>
 </div>
 
-<script src="script.js"></script></code></code>
+<script src="scripts.js"></script>
